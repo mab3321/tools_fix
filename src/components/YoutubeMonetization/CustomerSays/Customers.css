@@ -1,0 +1,13 @@
+.swiper-button-prev,
+.swiper-button-next {
+    color: #454545;
+    /*width: 1px;*/
+    background-color: transparent;
+    /*border: 2px solid red;*/
+}
+
+/*.swiper-button-prev:hover,*/
+/*.swiper-button-next:hover {*/
+/*    color: white;*/
+/*    background-color: red;*/
+/*}*/
