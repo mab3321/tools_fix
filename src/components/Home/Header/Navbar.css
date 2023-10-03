@@ -11,7 +11,9 @@
 #btn{
     transition: all 0.3s;
 }
-
+#wp {
+    transition: all 0.3s;
+}
 .gradient-bg-welcome {
     background-color:#0f0e13;
     background-image:
