@@ -8,6 +8,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import YoutubeMonetization from "./pages/YoutubeMonetization";
 import WpPluginsThemes from "./pages/wpPluginsThemes";
 import WpMain from "./components/wpPluginsAndThemes/WpMain";
+import Product from "./pages/Product";
 function App() {
   return (
     <>
@@ -23,6 +24,7 @@ function App() {
           />
           <Route path="/wp" element={<WpPluginsThemes />} />
           <Route path="/wpMain" element={<WpMain />} />
+          <Route path="/product" element={<Product />} />
         </Routes>
       </ScrollToTop>
     </>
