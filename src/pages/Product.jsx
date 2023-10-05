@@ -1,17 +1,30 @@
 // Product.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { json, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import WpHeader from "../components/Home/Header/WpHeader";
 import Footer from "../components/Home/Footer";
 import { BsWhatsapp } from "react-icons/bs";
+import Card from "../components/card/Card";
+
 function Product() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const productId = searchParams.get("id");
+  const [top_products, setTopProduct] = useState([]);
   const [product, setProduct] = useState({});
-
+  useEffect(() => {
+    // Make an API request to fetch the product data using the product ID
+    axios
+      .get(`http://127.0.0.1:5000/api/top_products`)
+      .then((response) => {
+        setTopProduct(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching product:", error);
+      });
+  }, [productId]);
   useEffect(() => {
     // Make an API request to fetch the product data using the product ID
     axios
@@ -79,6 +92,12 @@ function Product() {
               back-end Redux framework.
             </Paragraph>
           </Content>
+          <ContentOfCard>
+            {top_products &&
+              top_products.map((top_product) => {
+                return <Card top_product={top_product} />;
+              })}
+          </ContentOfCard>
         </ArticleContainer>
       </MainContainer>
       <div className="my-component">
@@ -115,6 +134,16 @@ const ElongatedPage = styled.div`
   background-color: #fff; /* Background color of the elongated page */
 
   z-index: 1; /* Ensure the elongated page appears on top of the image */
+`;
+const ContentOfCard = styled.div`
+  display: grid;
+  grid-gap: 25px;
+  gap: 25px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 `;
 const ArticleContainer = styled.article`
   margin-bottom: 2rem;
