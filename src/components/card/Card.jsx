@@ -48,10 +48,10 @@ const CardCategoryItem = styled.li`
 
 const Card = (props) => {
   const { top_product } = props;
-
+  const link = `/product?id=${top_product.id}`;
   return (
     <CardContainer>
-      <CardLink href={top_product.Product_link}>
+      <CardLink href={link}>
         <div className="container-nw2">
           <div className="card-pgd card-f1z">
             <CardImage src={top_product.Image_src} alt="" />

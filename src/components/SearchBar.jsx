@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { AiOutlineSearch } from "react-icons/ai"; // Import React Icons
-
+import { API_BASE_URL } from "../constants/constants";
 // Create a styled search bar component
 const StyledSearchBar = styled.form`
   display: flex;
@@ -42,7 +42,7 @@ function SearchBar({ setResults }) {
   const [keyword, setKeyword] = useState("");
   const [input, setInput] = useState("");
   const fetchData = (value) => {
-    fetch(`http://127.0.0.1:5000/api/search?query=${value}&limit=10`)
+    fetch(`${API_BASE_URL}/api/search?query=${value}&limit=10`)
       .then((response) => response.json())
       .then((json) => {
         const results = json.map((posts) => {
@@ -59,7 +59,7 @@ function SearchBar({ setResults }) {
     // Assuming you have an API endpoint to fetch data from the backend
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/api/search?query=${keyword}`
+        `${API_BASE_URL}/api/search?query=${keyword}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");

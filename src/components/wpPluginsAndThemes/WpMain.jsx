@@ -5,6 +5,7 @@ import ImgSlider from "../ImgSlider";
 import WpHeader from "../Home/Header/WpHeader";
 import Footer from "../Home/Footer";
 import Recommends from "../Recommends";
+import { API_BASE_URL } from "../../constants/constants";
 const WpMain = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -12,7 +13,7 @@ const WpMain = () => {
 
   useEffect(() => {
     // Define the API endpoint you want to fetch data from
-    const apiUrl = "http://127.0.0.1:5000/api/data"; // Replace with your API endpoint
+    const apiUrl = `${API_BASE_URL}/api/data`; // Replace with your API endpoint
 
     // Use the fetch API or axios to make the HTTP request
     axios

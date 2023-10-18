@@ -7,7 +7,7 @@ import WpHeader from "../components/Home/Header/WpHeader";
 import Footer from "../components/Home/Footer";
 import { BsWhatsapp } from "react-icons/bs";
 import Card from "../components/card/Card";
-
+import { API_BASE_URL } from "../constants/constants";
 function Product() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -17,7 +17,7 @@ function Product() {
   useEffect(() => {
     // Make an API request to fetch the product data using the product ID
     axios
-      .get(`http://127.0.0.1:5000/api/top_products`)
+      .get(`${API_BASE_URL}/api/top_products`)
       .then((response) => {
         setTopProduct(response.data);
       })
@@ -28,7 +28,7 @@ function Product() {
   useEffect(() => {
     // Make an API request to fetch the product data using the product ID
     axios
-      .get(`http://127.0.0.1:5000/api/products?id=${productId}`)
+      .get(`${API_BASE_URL}/api/products?id=${productId}`)
       .then((response) => {
         setProduct(response.data);
       })
